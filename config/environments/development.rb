@@ -75,5 +75,8 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.hosts << "b090125540b34be2a927874939e9e88e.vfs.cloud9.us-east-1.amazonaws.com"
-
+  
+  # Railsで画像のサイズ変更時のエラー回避
+  config.active_job.queue_adapter = :inline
+  
 end
