@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :order_details
+  devise_for :orders
+  devise_for :cart_items
+  devise_for :genres
+  devise_for :items
   devise_for :addresses
   namespace :public do
     get 'addresses/index'
