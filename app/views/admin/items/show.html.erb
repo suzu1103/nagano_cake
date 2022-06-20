@@ -1,0 +1,12 @@
+<h2>商品詳細</h2>
+<%= image_tag @item.image, size: "300x300" %>
+<h4>商品名</h4>
+<p><%= @item.name %></p>
+<h4>商品説明</h4>
+<p><%= @item.introduction %></p>
+<h4>ジャンル</h4>
+<p><%= @item.genre_id %></p>
+<h4>税込価格（税抜価格）</h4>
+<p><%= @item.price %></p>
+<h4>販売ステータス</h4>
+<p><%= @item.is_active %></p>
