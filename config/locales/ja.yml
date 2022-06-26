@@ -4,3 +4,7 @@ ja:
       is_active:
         sale: "販売中"
         stop_selling: "販売停止中"
+    customer:
+      is_deleted:
+        invalid: "退会"
+        valid: "有効"
