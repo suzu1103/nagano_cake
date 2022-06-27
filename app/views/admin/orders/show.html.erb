@@ -1,2 +1,32 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2>注文履歴詳細</h2>
+<h4>購入者</h4>
+<p><%= link_to order.customer.full_name, admin_customer_path(customer.id) %></p>
+<h4>注文日</h4>
+<p><%= @order.updated_at %></p>
+<h4>配送先</h4>
+<p><%= @order. %></p>
+<h4>支払方法</h4>
+<p><%= @order. %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">商品名</th>
+      <th scope="col">単価（税込）</th>
+      <th scope="col">数量</th>
+      <th scope="col">小計</th>
+    </tr>
+  </thead>
+
+<!--↓ここから編集-->
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
