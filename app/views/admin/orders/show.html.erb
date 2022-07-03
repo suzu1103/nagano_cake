@@ -18,15 +18,21 @@
     </tr>
   </thead>
 
-<!--↓ここから編集-->
   <tbody>
-    <% @items.each do |item| %>
+    <% @order_details.each do |order_detail| %>
       <tr>
-        <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id) %></td>
-        <td><%= item.price %></td>
-        <td><%= item.genre.name %></td>
+        <td><%= order_detail.item.name %></td>
+        <td><%= order_detail.with_tax_price %></td>
+        <td><%= order_detail.amount %></td>
+        <td><%= order_detail.subtotal %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<h4>商品合計</h4>
+<p><% @total += order_detail.subtotal %>円</p>
+<h4>送料</h4>
+<p><%=. %></p>
+<h4>請求金額合計</h4>
+<p><%=. %></p>
