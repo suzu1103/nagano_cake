@@ -1,1 +1,9 @@
 <h2>商品一覧</h2>
+<% @items.each do |item| %>
+    <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image, width: '300', height: 'auto' %>
+    <% end %>
+    <td><%= item.name %></td>
+    <td><%= item.price %></td>
+<% end %>
+<%= paginate @items %>

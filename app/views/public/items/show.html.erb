@@ -1,0 +1,8 @@
+<h2>商品詳細</h2>
+    <%= link_to item_path(@item.id) do %>
+        <%= image_tag @item.image, width: '300', height: 'auto' %>
+    <% end %>
+    <td><%= @item.name %></td>
+    <td><%= @item.introduction %></td>
+    <td><%= @item.price %></td>
+    

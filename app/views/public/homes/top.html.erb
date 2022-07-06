@@ -20,7 +20,10 @@
 
         <span class ="pt-3 col-md-3">
           <!--<div class = "card">-->
-            <%= image_tag item.image, width: '10%', height: 'auto' %><br>
+
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.image, width: '100', height: 'auto' %>
+            <% end %>
             <td><%= item.name %></td>
             <td><%= item.price %></td>
           <!--</div>-->
