@@ -8,3 +8,7 @@ ja:
       is_deleted:
         invalid: "退会"
         valid: "有効"
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"

@@ -1,4 +1,12 @@
 <h2>注文情報入力</h2>
 <h4>支払方法</h4>
+<%= form_with model: @orders, url:confirm_orders_path, method: :post do |f| %>
+  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+  <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
 
+  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+  <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+<% end %>
 <h4>お届け先</h4>
+
+<div><%= link_to "確認画面へ進む", confirm_orders_path, method: :post %></div>
