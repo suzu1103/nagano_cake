@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :customer_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -19,15 +20,19 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   protected
-  
+
   def customer_state
-    ## 【処理内容1】 入力されたemailからアカウントを1件取得
+    # 【処理内容1】 入力されたemailからアカウントを1件取得
     @customer = Customer.find_by(email: params[:customer][:email])
-    ## アカウントを取得できなかった場合、このメソッドを終了する
+    # アカウントを取得できなかった場合、このメソッドを終了する
     return if !@customer
-    ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    if @customer.valid_password?(params[:customer][:password])
-      ## 【処理内容3】
+    # 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+      # 【処理内容3】1,2がtrueだったら、is_deletedカラムの値を確認し、trueだったら退会済なのでサインアップ画面へ。falseだったら退会してないので、createを実行。
+      flash[:notice] = "このアカウントは既に退会済みです。"
+      redirect_to new_customer_registration_path
+    else
+      flash[:notice] = "入力してください"
     end
   end
 

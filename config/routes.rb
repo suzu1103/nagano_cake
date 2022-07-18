@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :addresses, except: [:new, :show]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :orders, only: [:new, :create, :index, :show] do
       collection do

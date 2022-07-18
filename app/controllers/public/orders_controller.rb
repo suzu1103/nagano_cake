@@ -1,23 +1,34 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order = current_customer.orders.new
+    @order = Order.new
   end
   
-  def create
-    @order = current_customer.orders.new(order_params)
+  def confirm
+    @order = Order.new(order_params)
     
+  end  
+  
+  def create
+    @order = Order.new(order_params)
+    
+    @order.save
+    redirect_to complete_orders_path   
     
   end
 
-  def confirm
-    @order = current_customer.orders.new(order_params)
-    @orde.save
-    redirect_to confirm_orders_path
-  end
+
 
   def index
   end
 
   def show
   end
+  
+  
+  private
+  
+  def order_params
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+  end
+  
 end

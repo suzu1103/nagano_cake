@@ -18,6 +18,10 @@
   <div class="form-group">
     <%= f.radio_button :address, 0 %>
     <%= f.label :address, "ご自身の住所" %>
+    <div>〒<%= current_customer.postal_code %></div>
+    <div><%= current_customer.address %></div>
+    <div><%= current_customer.full_name %></div>
+
   </div>
 
   <div class="form-group">
@@ -47,8 +51,8 @@
     </div>
 
 </table>
+<%= f.submit "確認画面へ進む" %>
 
 <% end %>
 
 
-<div><%= link_to "確認画面へ進む", confirm_orders_path, method: :post %></div>

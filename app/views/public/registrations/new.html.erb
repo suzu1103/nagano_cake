@@ -3,6 +3,8 @@
     <div class="col-md-10 col-sm-10 mx-2 mx-sm-auto text-center">
       <h4 class="text-dark py-4 mb-0">新規登録画面</h4>
 
+    <p id="notice"><%= flash[:notice] %></p>
+
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
 
@@ -67,9 +69,7 @@
         <div>
           <%= render "public/shared/links" %>
         </div>
-        <div>
-          からログインしてください。
-        </div>
+        <div>からログインしてください。</div>
       </div>
       
     </div>

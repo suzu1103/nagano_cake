@@ -4,8 +4,13 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # enum is_deleted: { invalid: true, valid: false }
-  # boolean型の時は不要↑
+  has_many :orders, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+  has_many :addresses, dependent: :destroy
+
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
   def full_name
     self.last_name + " " + self.first_name
@@ -15,7 +20,8 @@ class Customer < ApplicationRecord
     self.last_name_kana + " " + self.first_name_kana
   end
 
-  has_many :orders, dependent: :destroy
-  has_many :cart_items, dependent: :destroy
+
+  # enum is_deleted: { invalid: true, valid: false }
+  # boolean型の時は不要↑
 
 end

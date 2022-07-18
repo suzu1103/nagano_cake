@@ -19,7 +19,7 @@ class Public::CartItemsController < ApplicationController
           redirect_to cart_items_path
 
     else
-       @cart_items = current_customer.cart_items.all
+      @cart_items = current_customer.cart_items.all
       render :index
     end
 

@@ -1,0 +1,44 @@
+<h2>注文情報確認</h2>
+    <table class = "table">
+      <thead>
+        <tr>
+          <th scope="col">商品名</th>
+          <th scope="col">単価(税込)</th>
+          <th scope="col">数量</th>
+          <th scope="col">小計</th>
+          <th scope="col"></th>
+        </tr>
+
+        <!--<tr>-->
+        <!--  <th scope="col">送料</th>-->
+        <!--  <th scope="col">商品合計</th>-->
+        <!--  <th scope="col">請求合計</th>-->
+        <!--</tr>-->
+      </thead>
+
+      <tbody>
+        <% current_customer.cart_items.each do |cart_item| %>
+          <tr>
+            <td>
+              <%= image_tag cart_item.item.image, width: '100', height: 'auto' %>
+              <%= cart_item.item.name %>
+            </td>
+            <td><%= cart_item.item.with_tax_price %></td>
+            <td><%= cart_item.amount %></td>
+            <td><%= cart_item.subtotal %></td>
+
+
+          </tr>
+          <% end %>
+
+
+
+      </tbody>
+
+        <%= form_with model: @order, url:new_order_path do |f| %>
+          <%= f.hidden_field :name, :value => @order.name %>
+          <%= @order.name %>
+           <!--params[:order][:name]と同じ-->
+        <% end %>
+
+</table>

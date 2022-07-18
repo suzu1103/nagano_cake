@@ -1,4 +1,31 @@
 <h2>マイページ</h2>
-<h4>登録情報</h4>
-<h4>配送先</h4>
-<h4>注文履歴</h4>
+    <div>
+        <th>登録情報</th><th><%= link_to "編集する", edit_customers_path(current_customer.id), class:"btn btn-sm btn-success" %></th>
+    </div>
+    <table class = "table">
+        <tr>
+            <td>氏名</td><td><%= current_customer.full_name %></td>
+        </tr>
+        <tr>
+            <td>カナ</td><td><%= current_customer.full_name_kana %></td>
+        </tr>
+        <tr>
+            <td>郵便番号</td><td><%= current_customer.postal_code %></td>
+        </tr>
+        <tr>
+            <td>住所</td><td><%= current_customer.address %></td>
+        </tr>
+        <tr>
+            <td>電話番号</td><td><%= current_customer.telephone_number %></td>
+        </tr>
+        <tr>
+            <td>メールアドレス</td><td><%= current_customer.email %></td>
+        </tr>
+
+    </table>
+    <div>
+        <th>配送先</th><th><%= link_to "一覧を見る", addresses_path, class:"btn btn-sm btn-primary" %></th>
+    </div>
+    <div>
+        <th>注文履歴</th><th><%= link_to "一覧を見る", order_path(current_customer.id), class:"btn btn-sm btn-primary" %></th>
+    </div>
