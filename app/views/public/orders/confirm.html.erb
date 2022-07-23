@@ -1,5 +1,7 @@
 <h2>注文情報確認</h2>
-    <table class = "table">
+<div class = "container">
+  <div class = "row">
+    <table class = "table col-md-8">
       <thead>
         <tr>
           <th scope="col">商品名</th>
@@ -8,16 +10,12 @@
           <th scope="col">小計</th>
           <th scope="col"></th>
         </tr>
-
-        <!--<tr>-->
-        <!--  <th scope="col">送料</th>-->
-        <!--  <th scope="col">商品合計</th>-->
-        <!--  <th scope="col">請求合計</th>-->
-        <!--</tr>-->
       </thead>
 
       <tbody>
+        <% @total = 0 %>
         <% current_customer.cart_items.each do |cart_item| %>
+          <% @total += cart_item.item.with_tax_price * cart_item.amount %>
           <tr>
             <td>
               <%= image_tag cart_item.item.image, width: '100', height: 'auto' %>
@@ -26,19 +24,39 @@
             <td><%= cart_item.item.with_tax_price %></td>
             <td><%= cart_item.amount %></td>
             <td><%= cart_item.subtotal %></td>
-
-
           </tr>
+
           <% end %>
-
-
-
       </tbody>
+    </table>
 
+    <table class = "table col-md-4">
+      <tbody>
+        <tr>
+          <th scope="col">送料</th>
+          <td>800</td>
+          <th scope="col">商品合計</th>
+          <td><%= @total %></td>
+          <th scope="col">請求合計</th>
+          <td><%= @total + 800 %></td>
+        </tr>
+      </tbody>
+    </table>
         <%= form_with model: @order, url:new_order_path do |f| %>
           <%= f.hidden_field :name, :value => @order.name %>
           <%= @order.name %>
            <!--params[:order][:name]と同じ-->
         <% end %>
 
-</table>
+    <tr>
+      <th>支払方法</th>
+      <td><%= @order.payment_method %></td>
+      <th>お届け先</th>
+      <td>
+        <%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.name %>
+      </td>
+    </tr>
+  </div>
+</div>
