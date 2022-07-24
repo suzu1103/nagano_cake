@@ -27,5 +27,5 @@
         <th>配送先</th><th><%= link_to "一覧を見る", addresses_path, class:"btn btn-sm btn-primary" %></th>
     </div>
     <div>
-        <th>注文履歴</th><th><%= link_to "一覧を見る", order_path(current_customer.id), class:"btn btn-sm btn-primary" %></th>
+        <th>注文履歴</th><th><%= link_to "一覧を見る", orders_path(current_customer.id), class:"btn btn-sm btn-primary" %></th>
     </div>
