@@ -8,9 +8,9 @@ class OrderDetail < ApplicationRecord
     (price * 1.1).floor
   end
 
-  # 小計を求めるメソッド
+  # # 小計を求めるメソッド
   def subtotal
-    order_detail.with_tax_price * amount
+    self.with_tax_price * amount
   end
 
 

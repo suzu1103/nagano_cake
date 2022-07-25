@@ -1,23 +1,29 @@
-<h2>会員一覧</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">会員ID</th>
-        <th scope="col">氏名</th>
-        <th scope="col">メールアドレス</th>
-        <th scope="col">ステータス</th>
-       </tr>
-    </thead>
+<div class ="container">
+  <div class = "row">
 
-    <tbody>
-      <% @customers.each do |customer| %>
-        <tr>
-          <td><%= customer.id %></td>
-          <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
-          <td><%= customer.email %></td>
-          <td><%= customer.is_deleted_i18n %></td>
-         </tr>
-       <% end %>
-       <%= paginate @customers %>
-    </tbody>
-  </table>
+    <h2 class = "col-10 mt-3">会員一覧</h2>
+      <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">会員ID</th>
+            <th scope="col">氏名</th>
+            <th scope="col">メールアドレス</th>
+            <th scope="col">ステータス</th>
+           </tr>
+        </thead>
+
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+              <td><%= customer.email %></td>
+              <!--<td>%= customer.is_deleted_i18n %></td>-->
+             </tr>
+           <% end %>
+           <%= paginate @customers %>
+        </tbody>
+      </table>
+
+  </div>
+</div>

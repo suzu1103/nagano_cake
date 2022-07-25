@@ -15,7 +15,7 @@ class Order < ApplicationRecord
 
   # 小計を求めるメソッド
   def subtotal
-    order_detail.with_tax_price * amount
+    order_details.price * order_details.amount
   end
 
   enum payment_method: { credit_card: 0, transfer: 1 }
