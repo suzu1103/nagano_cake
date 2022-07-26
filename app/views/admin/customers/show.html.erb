@@ -14,5 +14,13 @@
 <h4>メールアドレス</h4>
 <p><%= @customer.email %></p>
 <h4>会員ステータス</h4>
-<p><%= @customer.is_deleted_i18n %></p>
-<%= link_to"編集する", edit_admin_customer_path(@customer.id) %>
+<p>
+                <% if @customer.is_deleted == true %>
+                退会
+                <% else %>
+                有効
+                <% end %>
+</p>
+
+<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
+<%= link_to "注文履歴一覧を見る", admin_path %>

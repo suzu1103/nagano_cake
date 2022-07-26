@@ -4,6 +4,6 @@
         <%= image_tag item.image, width: '300', height: 'auto' %>
     <% end %>
     <td><%= item.name %></td>
-    <td><%= item.with_tax_price %></td>
+    <td>¥<%= item.with_tax_price %>(税込)</td>
 <% end %>
 <%= paginate @items %>
