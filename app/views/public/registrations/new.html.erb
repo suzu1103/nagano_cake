@@ -1,7 +1,6 @@
-<div class="container">
   <div class="row no-gutters">
-    <div class="col-md-10 col-sm-10 mx-2 mx-sm-auto text-center">
-      <h4 class="text-dark py-4 mb-0">新規登録画面</h4>
+    <div class="col-md-10 mx-2 mx-sm-auto text-left shadow-lg rounded px-0 my-5">
+      <h4 class="text-dark text-center py-4 mb-0">新規登録画面</h4>
 
     <p id="notice"><%= flash[:notice] %></p>
 
@@ -9,71 +8,70 @@
         <%= render "public/shared/error_messages", resource: resource %>
 
         <table>
-          <div class="form-group">
-            <label class ="col-md-4">名前</label>
-            <label>（姓）</label>
-            <%= f.text_field :last_name %>
-            <label>（名）</label>
+          <div class="form-group ml-5">
+            <label class ="col-md-2">名前</label>
+            <label class = "col-md-2">（姓）</label>
+            <%= f.text_field :last_name, autofocus: true %>
+            <label class = "col-md-2">（名）</label>
             <%= f.text_field :first_name %>
           </div>
 
-          <div class="form-group">
-            <label class = "col-md-3">フリガナ</label>
+          <div class="form-group ml-5">
+            <label class = "col-md-2">フリガナ</label>
             <label class = "col-md-2">（セイ）</label>
             <%= f.text_field :last_name_kana %>
             <label class = "col-md-2">（メイ）</label>
             <%= f.text_field :first_name_kana %>
           </div>
 
-          <div class="form-group">
+          <div class="form-group ml-5">
             <label class = "col-md-4">メールアドレス</label>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.email_field :email, autocomplete: "email" %>
           </div>
 
-          <div class="form-group">
+          <div class="form-group ml-5">
             <label class = "col-md-4">郵便番号(ハイフンなし)</label>
             <%= f.text_field :postal_code %>
           </div>
 
-          <div class="form-group">
+          <div class="form-group ml-5">
             <label class = "col-md-4">住所</label>
-            <%= f.text_field :address, size: 60 %>
+            <%= f.text_field :address, size: 55 %>
           </div>
 
-          <div class="form-group">
+          <div class="form-group ml-5">
             <label class = "col-md-4">電話番号(ハイフンなし)</label>
             <%= f.text_field :telephone_number %>
           </div>
 
-          <div class="form-group">
-            <label>パスワード(６文字以上)</label>
+          <div class="form-group ml-5">
+            <label class = "col-md-4">パスワード(６文字以上)</label>
             <!--% if @minimum_password_length %>-->
             <!--<em>(%= @minimum_password_length %> characters minimum)</em>-->
             <!--% end %><br />-->
             <%= f.password_field :password, autocomplete: "new-password" %>
           </div>
 
-          <div class="form-group">
-            <label>パスワード(確認用)</label>
+          <div class="form-group ml-5">
+            <label class = "col-md-4">パスワード(確認用)</label>
             <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
           </div>
         </table>
 
-        <div class="actions">
+        <div class="actions text-center">
           <%= f.submit "新規登録" %>
         </div>
       <% end %>
 
-      <h5 class ="text-dark pt-4">既に登録済の方</h5><br>
+      <h5 class ="text-dark pt-4 text-center">既に登録済の方</h5><br>
       <div class="form-group">
-        <div>
-          <%= render "public/shared/links" %>
+        <div class = "text-center">
+          <!--%= render "public/shared/links" %>-->
+          <%= link_to "こちら", new_customer_session_path %>からログインしてください。
         </div>
-        <div>からログインしてください。</div>
       </div>
 
     </div>
   </div>
-</div>
 
 

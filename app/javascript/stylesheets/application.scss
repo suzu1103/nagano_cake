@@ -1,6 +1,37 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  height: 200px;
+  text-align: center;
+}
+
+// a {
+//  // display: block;
+//  width: 240px;
+//  height: auto;
+// }
+
+.pagination {
+  justify-content: center;
+}
+
+footer {
+  width: 100%;
+  height: 120px;
+  background-color: #dcdcdc;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
  body {
    font-family: 'Hannari', serif;
  }

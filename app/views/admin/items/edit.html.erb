@@ -1,4 +1,13 @@
 <h2>商品編集</h2>
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <!--下記URLでcreate(POST)のURLを指定する。-->
 <%= form_with model: @item, url:admin_item_path, method: :patch do |f| %>
   <h4>商品画像</h4>
@@ -8,15 +17,16 @@
   <h4>商品説明</h4>
   <%= f.text_area :introduction %>
   <h4>ジャンル</h4>
-  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "選択してください" %>
+  <!--%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),{selected: @item.genre.name} %>-->
+  <%= f.collection_select :genre_id, Genre.all, :id, :name,{prompt: @item.genre_id} %>
   <h4>税抜価格</h4>
   <%= f.text_field :price %>
-  <h4>販売ステータス</h4>
-  <%= f.radio_button :is_active, Item.is_actives.key(true) %>
-  <%= f.label :is_active, Item.is_actives_i18n[:sale] %>
+  <!--<h4>販売ステータス</h4>-->
+  <!--%= f.radio_button :is_active, Item.is_actives.key(true) %>-->
+  <!--%= f.label :is_active, Item.is_actives_i18n[:sale] %>-->
 
-  <%= f.radio_button :is_active, Item.is_actives.key(false) %>
-  <%= f.label :is_active, Item.is_actives_i18n[:stop_selling] %>
+  <!--%= f.radio_button :is_active, Item.is_actives.key(false) %>-->
+  <!--%= f.label :is_active, Item.is_actives_i18n[:stop_selling] %>-->
 
   <%= f.submit '変更を保存' %>
 <% end %>

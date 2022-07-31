@@ -17,9 +17,9 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <div class="navbar-brand p-3" href="/">
-            <%= link_to image_tag('logo.png'), "/", width: 'auto', height: '50%' %>
-          </div>
+          <a class="navbar-brand p-3" href="/", "240x73">
+            <%= link_to image_tag('logo.png'), "/" %>
+          </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -77,16 +77,20 @@
         </div>
       </nav>
     </header>
-    <main class="pt-1 mb-auto">
-    <%= yield %>
-    </main>
 
-    <footer class="bg-light pt-5 pb-4">
+    <body>
+      <div class = "container">
+        <%= yield %>
+      </div>
+    </body>
+
+    <!--<footer class = "bg-light pt-5 pb-4 bottom-0">-->
+    <footer>
       <div class="container">
         <div class="row no-gutters">
-          <div class="d-flex justify-content-center">
-            <%= image_tag 'logo.png', width: '30%', height: 'auto' %>
-          </div>
+          <!--<div class="d-flex justify-content-center">-->
+            <%= image_tag 'logo.png', width: '40%', height: 'auto' %>
+          <!--</div>-->
         </div>
       </div>
     </footer>

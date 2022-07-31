@@ -1,7 +1,10 @@
 class Public::AddressesController < ApplicationController
+  before_action :authenticate_customer!
+  # before_action :correct_customer, only: [:create, :edit, :update]
+
   def index
-    @addresses = Address.all
     @address = Address.new
+    @addresses = current_customer.addresses
   end
 
   def create
@@ -14,7 +17,7 @@ class Public::AddressesController < ApplicationController
   def edit
     @address = Address.find(params[:id])
   end
-  
+
   def update
     @address = Address.find(params[:id])
     if @address.update(address_params)

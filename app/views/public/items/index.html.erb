@@ -1,9 +1,11 @@
 <h2>商品一覧</h2>
+<h4>全<%= @items.count %>件</h4>
 <% @items.each do |item| %>
-    <%= link_to item_path(item.id) do %>
-        <%= image_tag item.image, width: '300', height: 'auto' %>
-    <% end %>
-    <td><%= item.name %></td>
-    <td>¥<%= item.with_tax_price %>(税込)</td>
+        <%= link_to item_path(item.id) do %>
+            <%= image_tag item.image, width: '300', height: 'auto' %>
+        <% end %>
+        <td><%= item.name %></td>
+        <td>¥<%= item.with_tax_price %>(税込)</td>
 <% end %>
+
 <%= paginate @items %>

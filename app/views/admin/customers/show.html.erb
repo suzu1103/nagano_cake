@@ -15,11 +15,11 @@
 <p><%= @customer.email %></p>
 <h4>会員ステータス</h4>
 <p>
-                <% if @customer.is_deleted == true %>
-                退会
-                <% else %>
-                有効
-                <% end %>
+    <% if @customer.is_deleted == true %>
+        退会
+    <% else %>
+        有効
+    <% end %>
 </p>
 
 <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
