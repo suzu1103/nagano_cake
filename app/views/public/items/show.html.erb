@@ -4,7 +4,7 @@
     <% end %>
     <td><%= @item.name %></td>
     <td><%= @item.introduction %></td>
-    <td>¥<%= @item.with_tax_price %>(税込)</td>
+    <td>¥<%= converting_to_jpy(@item.with_tax_price) %>(税込)</td>
 
     <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
         <%= f.hidden_field :item_id, :value => @item.id %>

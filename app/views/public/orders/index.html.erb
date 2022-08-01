@@ -22,8 +22,8 @@
                     <%= order_detail.name %>
                 </td>
                 <!--<td>%= order_detail.items.name %></td>-->
-                <td><%= order_detail.total_payment %></td>
-                <td><%= link_to "表示する", order_path(order_detail.id) %></td>
+                <td><%= converting_to_jpy(order_detail.total_payment) %>円</td>
+                <td><%= link_to "表示する", order_path(order_detail.id), class:"btn btn-outline-dark" %></td>
              </tr>
          <% end %>
        </tbody>

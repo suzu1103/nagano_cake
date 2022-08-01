@@ -46,9 +46,9 @@
             <% @order_details.each do |order_detail| %>
               <tr>
                 <td><%= order_detail.item.name %></td>
-                <td><%= order_detail.item.with_tax_price %></td>
+                <td><%= converting_to_jpy(order_detail.item.with_tax_price) %></td>
                 <td><%= order_detail.amount %></td>
-                <td><%= order_detail.subtotal %></td>
+                <td><%= converting_to_jpy(order_detail.subtotal) %></td>
               </tr>
             <% end %>
       </tbody>
@@ -57,7 +57,7 @@
     <table class = "col-4">
       <tr>
         <th>商品合計</th>
-        <td><%= @total %></td>
+        <td><%= converting_to_jpy(@total) %></td>
       </tr>
       <tr>
         <th>送料</th>
@@ -65,7 +65,7 @@
       </tr>
       <tr>
         <th>請求金額合計</th>
-        <td><%= @order.total_payment %></td>
+        <td><%= converting_to_jpy(@order.total_payment) %></td>
       </tr>
     </table>
 
