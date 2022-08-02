@@ -1,6 +1,6 @@
 <h2>マイページ</h2>
     <div class = "form-inline">
-        <h5 class = "p-3 text-info">登録情報</h5>
+        <h5 class = "p-3 text-secondary">登録情報</h5>
         <div><%= link_to "編集する", edit_customers_path(current_customer.id), class:"btn btn-sm btn-outline-dark" %></div>
     </div>
 
@@ -26,10 +26,10 @@
     </table>
 
     <div class = "form-inline">
-        <h5 class = "p-3">配送先</h5>
+        <h5 class = "p-3 text-secondary">配送先</h5>
         <div><%= link_to "一覧を見る", addresses_path, class:"btn btn-sm btn-outline-dark" %></div>
     </div>
     <div class = "form-inline">
-        <h5 class = "p-3">注文履歴</h5>
+        <h5 class = "p-3 text-secondary">注文履歴</h5>
         <div><%= link_to "一覧を見る", orders_path(current_customer.id), class:"btn btn-sm btn-outline-dark" %></div>
     </div>
