@@ -1,17 +1,26 @@
 <h2>商品詳細</h2>
-<%= image_tag @item.image, width: '300', height: 'auto' %>
-<h4>商品名</h4>
-<p><%= @item.name %></p>
-<h4>商品説明</h4>
-<p><%= @item.introduction %></p>
-<h4>ジャンル</h4>
-<p><%= @item.genre.name %></p>
-<h4>税込価格（税抜価格）</h4>
-<p>
-  <%= converting_to_jpy(@item.with_tax_price) %>
-  (<%= converting_to_jpy(@item.price) %>)
-  円
-</p>
-<!--<h4>販売ステータス</h4>-->
-<!--<p>%= @item.is_active_i18n %></p>-->
-<%= link_to"編集する", edit_admin_item_path(@item.id) %>
+<div class = "row">
+  <!--<div class = "col-md-12">-->
+
+  <div class = "col-md-4">
+    <%= image_tag @item.image, width: '300', height: 'auto' %>
+  </div>
+  <div class = "col-md-8">
+    <h4>商品名</h4>
+    <p><%= @item.name %></p>
+    <h4>商品説明</h4>
+    <p><%= @item.introduction %></p>
+    <h4>ジャンル</h4>
+    <p><%= @item.genre.name %></p>
+    <h4>税込価格（税抜価格）</h4>
+    <p>
+      <%= converting_to_jpy(@item.with_tax_price) %>
+      (<%= converting_to_jpy(@item.price) %>)
+      円
+    </p>
+    <!--<h4>販売ステータス</h4>-->
+    <!--<p>%= @item.is_active_i18n %></p>-->
+  </div>
+  <div class = "col-12 text-center"><%= link_to"編集する", edit_admin_item_path(@item.id) %></div>
+  <!--</div>-->
+</div>

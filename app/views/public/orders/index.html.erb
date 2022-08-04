@@ -6,25 +6,29 @@
         <tr>
           <th scope="col">注文日</th>
           <th scope="col">配送先</th>
-          <!--<th scope="col">注文商品</th>-->
+          <th scope="col">注文商品</th>
           <th scope="col">支払金額</th>
           <th scope="col">注文詳細</th>
         </tr>
        </thead>
 
        <tbody>
-         <% @order.each do |order_detail| %>
+         <% @order.each do |order| %>
             <tr>
-                <td><%= order_detail.updated_at.strftime('%Y/%m/%d') %></td>
+                <td><%= order.updated_at.strftime('%Y/%m/%d') %></td>
                 <td>
-                    <%= order_detail.postal_code %>
-                    <%= order_detail.address %>
-                    <%= order_detail.name %>
+                    <%= order.postal_code %>
+                    <%= order.address %>
+                    <%= order.name %>
                 </td>
-                <!--<td>%= order_detail.items.name %></td>-->
-                <td><%= converting_to_jpy(order_detail.total_payment) %>円</td>
-                <td><%= link_to "表示する", order_path(order_detail.id), class:"btn btn-outline-dark" %></td>
-             </tr>
+                <td>
+                    <% order.order_details.each do |order_detail| %>
+                      <%= order_detail.item.name %>
+                    <% end %>
+                </td>
+                <td><%= converting_to_jpy(order.total_payment) %>円</td>
+                <td><%= link_to "表示する", order_path(order.id), class:"btn btn-outline-dark" %></td>
+            </tr>
          <% end %>
        </tbody>
 

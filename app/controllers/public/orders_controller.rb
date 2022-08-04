@@ -1,4 +1,7 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!, only: [:new, :confirm, :create, :index, :show]
+  before_action :logged_in_customer, only: [:edit, :update]
+
   def new
     @order = Order.new
     @addresses = current_customer.addresses.all
@@ -66,5 +69,12 @@ class Public::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:postal_code, :address, :name)
   end
+
+  def authenticate_customer
+    unless customer_signed_in? == current_customer
+      redirect_to new_customer_session_path
+    end
+  end
+
 
 end

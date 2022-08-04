@@ -48,36 +48,35 @@
       </div>
     </div>
 
-   <div class = "col-12">
-    <div class = "form-inline">
-      <h4>支払方法</h4>
-      <div><%= @order.payment_method_i18n %></div>
-    </div>
-    <div class = "form-inline">
-      <h4>お届け先</h4>
+    <div class = "col-12">
+      <div class = "form-inline">
+        <h4>支払方法</h4>
+        <div class = "pl-3"><%= @order.payment_method_i18n %></div>
+      </div>
+      <div class = "form-inline">
+        <h4>お届け先</h4>
+        <div class = "pl-3">
+          <%= @order.postal_code %>
+          <%= @order.address %><br>
+          <%= @order.name %>
+        </div>
+      </div>
+
       <div>
-        <%= @order.postal_code %>
-        <%= @order.address %><br>
-        <%= @order.name %>
-      </div>
-    </div>
-  </div>
+        <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+          <%= f.hidden_field :customer_id %>
+          <%= f.hidden_field :shipping_cost %>
+          <%= f.hidden_field :total_payment %>
+          <%= f.hidden_field :payment_method %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :address %>
+          <%= f.hidden_field :postal_code %>
 
-    <div>
-      <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-        <%= f.hidden_field :customer_id %>
-        <%= f.hidden_field :shipping_cost %>
-        <%= f.hidden_field :total_payment %>
-        <%= f.hidden_field :payment_method %>
-        <%= f.hidden_field :name %>
-        <%= f.hidden_field :address %>
-        <%= f.hidden_field :postal_code %>
-
-      <div class = "col center-block text-center  mt-4">
-          <%= f.submit "注文を確定する", class: "btn btn-lg btn-info" %>
-        <% end %>
-      </div>
+        <div class = "col center-block text-center mt-4">
+            <%= f.submit "注文を確定する", class: "btn btn-lg btn-info" %>
+          <% end %>
+        </div>
     </div>
 
-
+    </div>
   </div>
