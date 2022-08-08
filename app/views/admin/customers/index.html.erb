@@ -1,35 +1,36 @@
 <div class ="container">
   <div class = "row">
-
-    <h2 class = "col-10 mt-3">会員一覧</h2>
-      <table class="table mt-5">
-        <thead>
-          <tr>
-            <th scope="col">会員ID</th>
-            <th scope="col">氏名</th>
-            <th scope="col">メールアドレス</th>
-            <th scope="col">ステータス</th>
-           </tr>
-        </thead>
-
-        <tbody>
-          <% @customers.each do |customer| %>
+    <div class = "col-md-10 mt-3">
+      <h2>会員一覧</h2>
+        <table class="table mt-5">
+          <thead>
             <tr>
-              <td><%= customer.id %></td>
-              <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
-              <td><%= customer.email %></td>
-              <td>
-                <% if customer.is_deleted == true %>
-                  退会
-                <% else %>
-                  有効
-                <% end %>
-              </td>
+              <th scope="col">会員ID</th>
+              <th scope="col">氏名</th>
+              <th scope="col">メールアドレス</th>
+              <th scope="col">ステータス</th>
              </tr>
-           <% end %>
-           <%= paginate @customers %>
-        </tbody>
-      </table>
+          </thead>
 
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td><%= customer.id %></td>
+                <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+                <td><%= customer.email %></td>
+                <td>
+                  <% if customer.is_deleted == true %>
+                    退会
+                  <% else %>
+                    有効
+                  <% end %>
+                </td>
+               </tr>
+             <% end %>
+
+          </tbody>
+        </table>
+      <%= paginate @customers %>
+    </div>
   </div>
 </div>
