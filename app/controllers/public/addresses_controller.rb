@@ -1,6 +1,6 @@
 class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
-  before_action :logged_in_customer, only: [:edit, :update]
+  # before_action :logged_in_customer, only: [:edit, :update]
 
   def index
     @address = Address.new
@@ -10,8 +10,11 @@ class Public::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      redirect_to addresses_path
+    else
+      render :index
+    end
   end
 
   def edit

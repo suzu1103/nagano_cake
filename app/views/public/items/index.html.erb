@@ -1,11 +1,24 @@
-<h2>商品一覧</h2>
-<h4>全<%= @items.count %>件</h4>
-<% @items.each do |item| %>
-        <%= link_to item_path(item.id) do %>
-            <%= image_tag item.image, width: '300', height: 'auto' %>
-        <% end %>
-        <td><%= item.name %></td>
-        <td>¥<%= converting_to_jpy(item.with_tax_price) %>(税込)</td>
-<% end %>
-
-<%= paginate @items %>
+<div class ="row">
+    <h2>商品一覧</h2>
+    <h4>全<%= @items.count %>件</h4>
+        <div class = "col-md-12 d-flex flex-wrap">
+            <!--<div class = "col-md-3">-->
+                <% @items.each do |item| %>
+                    <div class = "px-2 py-4">
+                      <div class = "card border-0" style = "width:250px">
+                        <div class = "card-img">
+                            <%= link_to item_path(item.id) do %>
+                                <%= image_tag item.image, width: '250', height: 'auto' %>
+                            <% end %>
+                        </div>
+                        <p class = "card-title"><%= item.name %></p>
+                        <p class = "card-text">¥<%= converting_to_jpy(item.with_tax_price) %>(税込)</p>
+                      </div>
+                    </div>
+                <% end %>
+            <!--</div>-->
+        </div>
+     <div class = "col-md-11">
+        <%= paginate @items %>
+    </div>
+</div>
