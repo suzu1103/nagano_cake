@@ -22,9 +22,11 @@
                     <%= order.name %>
                 </td>
                 <td>
-                    <% order.order_details.each do |order_detail| %>
+                  <% order.order_details.each do |order_detail| %>
+                    <div class = "d-flex flex-column">
                       <%= order_detail.item.name %>
-                    <% end %>
+                    </div>
+                  <% end %>
                 </td>
                 <td><%= converting_to_jpy(order.total_payment) %>円</td>
                 <td><%= link_to "表示する", order_path(order.id), class:"btn btn-outline-dark" %></td>
